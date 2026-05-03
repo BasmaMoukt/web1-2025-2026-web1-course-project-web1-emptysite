@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" a href="style.css">
+    <title>Photography</title>
+</head>
+<body class="main-image">
+ <div class="wrapper">
+			<div id="grid">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+
+			<header>
+            <nav class="navbar">
+                <div class="nav-container">
+
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html" class="active">Projects</a></li>
+           
+                        </ul>
+                    <button class="menu-toggle">☰</button>
+                </div>
+            </nav>
+				<div class="hero-text-gallery">
+					<h1>Gallery</h1>
+				</div>
+
+				<div class="images-gallery">
+					<img src="images/pics/000227070018.jpg" alt="car" class="img-1"  />
+					<img src="images/pics/000259100014.jpg" alt="roundabout" class="img-2" />
+					<img src="images/pics/060384360004.jpg" alt="building"  class="img-3" />
+					<img src="images/pics/060384360027.jpg" alt="sun" class="img-4" />
+					<img src="images/pics/060384360034.jpg" alt="building" class="img-5" />
+					<img src="images/pics/IMG_0058.JPG" alt="cat and palmtrees" class="img-6" />
+					<img src="images/pics/station.jpg" alt="station" class="img-7" />
+				</div>
+		
+		</div>
+        <footer>
+            <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+            <p>Basma Mouktaoui Erramah</p>
+            <a href="https://github.com/BasmaMoukt">GitHub</a>
+        </footer>
+        </header>    
+
+        <script>
+        // Function to update active nav link
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Select elements correctly
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinksContainer.contains(e.target)) {
+                navLinksContainer.classList.remove('active');
+            }
+        });
+</script>
+</body>
+</html>

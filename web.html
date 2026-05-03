@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" a href="style.css">
+    <title>Web</title>
+</head>
+<body class="web-background">
+                <nav class="navbar">
+                <div class="nav-container">
+
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html" class="active">Projects</a></li>
+           
+                        </ul>
+                    <button class="menu-toggle">☰</button>
+                </div>
+            </nav>
+
+            <main>
+                <div class="hero-text">
+                    <h1>Web</h1>
+                </div>
+
+                    <div class="container-web">
+                        <div><img src="images/web/anywhere.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/COCO.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/codeacedamy.png" alt="website" class="img-web"></div>
+                    </div>
+                </br>
+                    <div class="container-web">
+                        <div><img src="images/web/cursorUp.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/DC.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/noggin.png" alt="website" class="img-web"></div>
+                    </div>
+                </br>
+                    <div class="container-web">
+                        <div><img src="images/web/OnePiece.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/plurasight.png" alt="website" class="img-web"></div>
+                        <div><img src="images/web/wellbeing.png" alt="website" class="img-web"></div>
+                    </div>
+            </main>
+
+        <footer>
+            <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+            <p>Basma Mouktaoui Erramah</p>
+            <a href="https://github.com/BasmaMoukt">GitHub</a>
+        </footer>
+
+        </header>    
+
+        <script>
+        // Function to update active nav link
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Select elements correctly
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinksContainer.contains(e.target)) {
+                navLinksContainer.classList.remove('active');
+            }
+        });
+</script>
+</body>
+</html>

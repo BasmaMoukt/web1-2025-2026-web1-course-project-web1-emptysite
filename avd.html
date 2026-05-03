@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" a href="style.css">
+    <title>Audivisual Design</title>
+</head>
+<body>
+                <nav class="navbar">
+                <div class="nav-container">
+
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html" class="active">Projects</a></li>
+           
+                        </ul>
+                    <button class="menu-toggle">☰</button>
+                </div>
+            </nav>
+
+            <main>
+                <div class="hero-text">
+                    <h1>Audivisual Design</h1>
+                </div>
+
+                    <div class="container">
+                 <div class="videos">
+        
+                    <video width="420" height="340" controls>
+                        <source src="videos/dollar_1.mp4" type="video/mp4">
+                    </video>
+                    
+                    <video width="420" height="340" controls>
+                        <source src="videos/Basma_Mouktaoui_Erramah_KineticTypographyMusic.mp4" type="video/mp4">
+                    </video>
+                    
+                    <video width="420" height="340" controls>
+                        <source src="videos/Mouktaoui_Erramah_Basma_Parallax.mp4" type="video/mp4">
+                    </video>
+		        </div>
+                    </div>
+            </main>
+
+        <footer>
+            <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+            <p>Basma Mouktaoui Erramah</p>
+            <a href="https://github.com/BasmaMoukt">GitHub</a>
+        </footer>
+
+        </header>    
+
+        <script>
+        // Function to update active nav link
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+         // Listen for scroll events
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Select elements correctly
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinksContainer.contains(e.target)) {
+                navLinksContainer.classList.remove('active');
+            }
+        });
+</script>
+</body>
+</html>
